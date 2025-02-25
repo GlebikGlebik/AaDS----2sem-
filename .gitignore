@@ -8,6 +8,8 @@
 .alpackages/
 #Snapshots folder
 .snapshots/
+#Testing Input folder
+.input/
 #Testing Output folder
 .output/
 #Extension App-file
