@@ -40,13 +40,13 @@ class AlmostPalindrome:
                 counter += 1
         return counter
 
-    def guiding_function(self):
+    def resulting_function(self):
         self.subword_finder()
         return self.counter_almost_palindrome()
 
 def main():
     ap = AlmostPalindrome()
-    res = ap.guiding_function()
+    res = ap.resulting_function()
     write_output(20, res)
 
 if __name__ == '__main__':
