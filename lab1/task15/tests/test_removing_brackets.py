@@ -81,7 +81,7 @@ class TestRemovingBrackets(unittest.TestCase):
     def test_100_elements(self):
         # given
         self.s = '([){]]))[{[][)]{(}}){([{][[[[)(()}}]](][}(}}[}{)}(}{)}[()[[]]{][[{){{})[{{))[(({[]][))}})([)([][{{(['
-        expected_result = '[][]()(){}{}()[[]]{}[][]'  # Все скобки должны остаться
+        expected_result = '[][]()(){}{}()[[]]{}[][]'
         # when
         self.rem.s = self.s
         result = self.rem.resulting_function()
