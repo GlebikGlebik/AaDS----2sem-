@@ -15,13 +15,13 @@ def souvenirs(n, values):
     def backtrack(idx, curr_sum, mask):
         if curr_sum == target:
             masks.append(mask)
-            return masks
+            return
         if idx >= n or curr_sum > target:
             return
         backtrack(idx + 1, curr_sum + values[idx], mask | (1 << idx))
         backtrack(idx + 1, curr_sum, mask)
 
-    backtrack(0, 0, 0, )
+    backtrack(0, 0, 0)
 
     for mask in masks:
         remaining = []
