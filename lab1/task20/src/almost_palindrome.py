@@ -1,10 +1,12 @@
 import sys
 import os
+import time
 
 from lab1.utils import read_input, write_output, decorate
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
+start = time.perf_counter()
 
 class AlmostPalindrome:
     def __init__(self):
@@ -14,40 +16,46 @@ class AlmostPalindrome:
         s - слово
         """
         input_data = read_input(20)
-        self.n,self.k = map(int, input_data[0].split())
+        self.n, self.k = map(int, input_data[0].split())
         self.s = input_data[1]
-        self.subwords = []
+        self.changes = [[0] * self.n for _ in range(self.n)]
 
-    def subword_finder(self):
-        for i in range(self.n):
-            for j in range(self.n - i):
-                self.subwords.append(self.s[j: j + i + 1])
-        return self.subwords
+    def preprocess_palindrome_changes(self):
+        for length in range(2, self.n + 1):  # длина подстроки
+            for left in range(self.n - length + 1):
+                right = left + length - 1
+                self.changes[left][right] = self.changes[left + 1][right - 1] + (self.s[left] != self.s[right])
 
-    def counter_almost_palindrome(self):
-        counter = 0
-        for i in self.subwords:
-            mismatch_counter = 0
-            if len(i) == 1:
-                counter += 1
-                continue
-            for j in range(len(i) - 1):
-                if i[j] != i[len(i) - 1 - j]:
-                    mismatch_counter += 1
-                    if mismatch_counter > self.k:
-                        break
-            else:
-                counter += 1
-        return counter
+        return self.changes
 
-    def resulting_function(self):
-        self.subword_finder()
-        return self.counter_almost_palindrome()
+    def can_form_palindrome_with_k_changes(self, start, end):
+        return self.changes[start][end] <= self.k
+
+    def almost_palindromes_counter(self):
+        self.changes = self.preprocess_palindrome_changes()
+        count = 0
+
+        for length in range(1, self.n + 1):  # длина подстроки
+            for start in range(self.n - length + 1):
+                end = start + length - 1
+                if self.can_form_palindrome_with_k_changes(start, end):
+                    count += 1
+
+        return count
+
 
 def main():
     ap = AlmostPalindrome()
-    res = ap.resulting_function()
+    res = ap.almost_palindromes_counter()
+
+    end = time.perf_counter()
+
     write_output(20, res)
 
+    print("Время работы: ", end - start, "секунд")
+
+
 if __name__ == '__main__':
-    decorate(task=20, task_name='almost_palindrome')
+    decorate(20,task_name='almost_palindrome')
+    main()
+
