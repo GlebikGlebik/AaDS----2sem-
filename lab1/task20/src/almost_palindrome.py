@@ -18,7 +18,6 @@ class AlmostPalindrome:
         input_data = read_input(20)
         self.n, self.k = map(int, input_data[0].split())
         self.s = input_data[1]
-        self.subwords = []
         self.changes = [[0] * self.n for _ in range(self.n)]
 
     def preprocess_palindrome_changes(self):
