@@ -46,3 +46,14 @@ def decorate(task, task_name):
     current, peak = tracemalloc.get_traced_memory()
     print(f"Пиковая память: {peak / 2 ** 20:.2f} MB")
     tracemalloc.stop()
+
+
+def check_time_and_memory(task_func, tasknumber, *args):
+    print(f"task №{tasknumber} tests")
+    tracemalloc.start()
+    start_time = time.time()
+
+    task_func(*args)
+
+    tracemalloc.stop()
+    return tracemalloc.get_traced_memory()[1]//1024, time.time() - start_time
