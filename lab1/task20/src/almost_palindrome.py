@@ -56,6 +56,5 @@ def main():
 
 
 if __name__ == '__main__':
-    decorate(20,task_name='almost_palindrome')
     main()
 

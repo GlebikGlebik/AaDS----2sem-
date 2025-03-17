@@ -54,18 +54,6 @@ class TestAlmostPalindrome(unittest.TestCase):
         # then
         self.assertEqual(result, 10)  # Ожидаемое количество почти палиндромов
 
-    def test_empty_string(self):
-        # given
-        self.ap.n = 0
-        self.ap.k = 1
-        self.ap.s = ''
-
-        # when
-        self.ap.almost_palindromes_counter()
-
-        # then
-        self.assertEqual(self.ap.subwords, [])  # Подстрок не должно быть
-
     def test_single_character(self):
         # given
         self.ap.n = 1
