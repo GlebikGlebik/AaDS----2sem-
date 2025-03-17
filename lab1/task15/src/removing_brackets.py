@@ -7,8 +7,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 
 class Removing:
     def __init__(self):
-        input_data = read_input(15)
-        self.s = input_data[0]
+        self.input_data = []
+        self.s = ''
         self.closing_brackets = ')}]'
         self.opening_brackets = "({["
         self.stack = {}
@@ -79,10 +79,15 @@ class Removing:
 
 def main():
     rem = Removing()
-
-    res = rem.resulting_function()
-
-    write_output(15, res)
+    rem.input_data = read_input(15)
+    if rem.input_data:
+        rem.s = rem.input_data[0]
+        res = rem.resulting_function()
+        write_output(15, res)
+    else:
+        res = ''
+        write_output(15, res)
+        return
 
 if __name__ == '__main__':
     decorate(task = 15, task_name= 'removing_brackets')
