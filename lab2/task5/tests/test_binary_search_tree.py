@@ -4,7 +4,7 @@ from lab2.task5.src.binary_search_tree import binary_search_tree
 from random import randint
 
 
-class TestBinarySearch(unittest.TestCase):
+class TestBinarySearchTree(unittest.TestCase):
 
     def test_should_check_example(self):
         # given
@@ -40,16 +40,6 @@ class TestBinarySearch(unittest.TestCase):
 
     def test_should_check_max_values(self):
         # given
-        # data = 10 * ['insert 1000000000',
-        #              'insert 999999999',
-        #              'insert -10000000000'
-        #              'insert -999999999',
-        #              'insert -999999998',
-        #              'insert 0'
-        #              'exists 1000000000',
-        #              'delete 1000000000',
-        #              'prev -999999997',
-        #              'next -999999997']
         arr = [randint(0, 1000000000) for _ in range(16)]
         data = ['insert 1000000000',
                 'insert 999999999',
