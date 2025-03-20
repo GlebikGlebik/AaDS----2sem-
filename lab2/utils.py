@@ -56,5 +56,3 @@ def check_time_and_memory(task_func, tasknumber, *args):
     tracemalloc.stop()
     return tracemalloc.get_traced_memory()[1]//1024, time.time() - start_time
 
-
-  

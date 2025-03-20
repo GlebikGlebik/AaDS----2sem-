@@ -72,7 +72,7 @@ class Removing:
                     self.deleter(self.s[i], i)
         res = ''
         for i in range(len(self.s)):
-            if i not in self.stack.keys() and i not in self.indexes_to_delete:
+            if i not in self.stack.values() and i not in self.indexes_to_delete:
                 res += self.s[i]
         return res
 
