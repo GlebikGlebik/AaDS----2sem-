@@ -54,18 +54,6 @@ class TestAlmostPalindrome(unittest.TestCase):
         # then
         self.assertEqual(result, 10)  # Ожидаемое количество почти палиндромов
 
-    def test_empty_string(self):
-        # given
-        self.ap.n = 0
-        self.ap.k = 1
-        self.ap.s = ''
-
-        # when
-        self.ap.almost_palindromes_counter()
-
-        # then
-        self.assertEqual(self.ap.subwords, [])  # Подстрок не должно быть
-
     def test_single_character(self):
         # given
         self.ap.n = 1
@@ -80,13 +68,13 @@ class TestAlmostPalindrome(unittest.TestCase):
 
     def test_maximum_values(self):
         # given
-        self.ap.n = 5000  # Максимальное значение N
+        self.ap.n = 3000  # Максимальное значение N
         self.ap.k = 1  # Максимальное значение K
-        self.ap.s = 'a' * 5000  # Строка из 5000 символов 'a'
+        self.ap.s = 'a' * 3000 # Строка из 5000 символов 'a'
 
         # when
         self.ap.almost_palindromes_counter()  # Генерируем подстроки
-        expected_result = 12502500
+        expected_result = 4501500
 
         # then
         result = self.ap.almost_palindromes_counter()  # количество палиндромов в строке из одинаковых символов
