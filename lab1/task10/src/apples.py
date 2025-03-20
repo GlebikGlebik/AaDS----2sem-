@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../utils')))
-from lab1.utils import read_input, write_output, decorate
+from lab1.utils import read_input, write_output, decorate, check_time_and_memory
 
 
 class ApplesSolver:
