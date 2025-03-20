@@ -26,9 +26,7 @@ def binary_search_tree_check(lines):
 
 def main():
     data = read_input(6)
-    n = data[0]
     nodes = data[1:]
-    print(nodes)
     res = binary_search_tree_check(nodes)
     if res == 1:
         write_output(6, 'CORRECT')

@@ -94,11 +94,8 @@ def binary_search_tree(lines):
 
 def main():
     data = read_input(5)
-    print(data)
     res = binary_search_tree(data)
-    print(res)
     res = '\n'.join(map(str, res))
-    print(res)
     write_output(5, res)
 
 if __name__ == '__main__':
