@@ -3,7 +3,6 @@ import time
 import tracemalloc
 import importlib.util
 
-
 def read_input(task):
     """
     Функция для чтения входных данных из файла 'input.txt'.
@@ -13,7 +12,6 @@ def read_input(task):
     base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), f'task{task}', 'txtf', 'input.txt'))
     with open(base_path, 'r') as f:
         return [line.strip() for line in f.readlines()]
-
 
 def write_output(task, *args):
     """
@@ -25,7 +23,6 @@ def write_output(task, *args):
     with open(base_path, 'w') as f:
         for arg in args:
             print(arg, file=f)
-
 
 def decorate(task, task_name):
     import time
@@ -49,7 +46,6 @@ def decorate(task, task_name):
     print(f"Пиковая память: {peak / 2 ** 20:.2f} MB")
     tracemalloc.stop()
 
-
 def check_time_and_memory(task_func, tasknumber, *args):
     print(f"task №{tasknumber} tests")
     tracemalloc.start()
@@ -59,3 +55,6 @@ def check_time_and_memory(task_func, tasknumber, *args):
 
     tracemalloc.stop()
     return tracemalloc.get_traced_memory()[1]//1024, time.time() - start_time
+
+
+  
