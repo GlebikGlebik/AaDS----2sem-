@@ -9,7 +9,6 @@ def build_adjacency_list(n, m, data):
         u, v = map(int, data[index].split())
         adj[u].append(v)
         adj[v].append(u)
-        index += 1
     return adj
 
 
