@@ -89,5 +89,39 @@ class TestRemovingBrackets(unittest.TestCase):
         # then
         self.assertEqual(result, expected_result)
 
+    def test_empty_string(self):
+        # given
+        self.s = ''
+        expected_result = ''
+        # when
+        self.rem.s = self.s
+        result = self.rem.resulting_function()
+
+        # then
+        self.assertEqual(result, expected_result)
+
+    def test_every_bracket_is_wrong(self):
+        # given
+        self.s = '(((('
+        expected_result = ''
+        # when
+        self.rem.s = self.s
+        result = self.rem.resulting_function()
+
+        # then
+        self.assertEqual(result, expected_result)
+
+    def test_every_bracket_is_wrong_2(self):
+        # given
+        self.s = '))))'
+        expected_result = ''
+        # when
+        self.rem.s = self.s
+        result = self.rem.resulting_function()
+
+        # then
+        self.assertEqual(result, expected_result)
+
+
 if __name__ == '__main__':
     unittest.main()

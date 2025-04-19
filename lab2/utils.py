@@ -13,7 +13,6 @@ def read_input(task):
     with open(base_path, 'r') as f:
         return [line.strip() for line in f.readlines()]
 
-
 def write_output(task, *args):
     """
     Функция для записи выходных данных в файл 'output.txt'.
@@ -56,3 +55,4 @@ def check_time_and_memory(task_func, tasknumber, *args):
 
     tracemalloc.stop()
     return tracemalloc.get_traced_memory()[1]//1024, time.time() - start_time
+

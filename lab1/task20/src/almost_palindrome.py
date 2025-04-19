@@ -1,9 +1,12 @@
 import sys
 import os
+import time
 
 from lab1.utils import read_input, write_output, decorate
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+start = time.perf_counter()
 
 class AlmostPalindrome:
     def __init__(self):
@@ -15,7 +18,6 @@ class AlmostPalindrome:
         input_data = read_input(20)
         self.n, self.k = map(int, input_data[0].split())
         self.s = input_data[1]
-        self.subwords = []
         self.changes = [[0] * self.n for _ in range(self.n)]
 
     def preprocess_palindrome_changes(self):
@@ -45,7 +47,12 @@ class AlmostPalindrome:
 def main():
     ap = AlmostPalindrome()
     res = ap.almost_palindromes_counter()
+
+    end = time.perf_counter()
+
     write_output(20, res)
+
+    print("Время работы: ", end - start, "секунд")
 
 
 if __name__ == '__main__':
