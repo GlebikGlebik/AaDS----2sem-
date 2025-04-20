@@ -5,6 +5,7 @@ from lab3.utils import read_input, write_output, decorate
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
+
 class Labyrinth:
     def __init__(self):
         self.input_file = read_input(1)
@@ -18,6 +19,10 @@ class Labyrinth:
     def graph_builder(self):
         for j in self.input_file[1:-1]:
             start, end = map(int, j.split())
+            if start not in self.graph:
+                self.graph[start] = set()
+            if end not in self.graph:
+                self.graph[end] = set()
             self.graph[start].add(end)
             self.graph[end].add(start)
         return self.graph
@@ -37,6 +42,7 @@ def main():
     lab = Labyrinth()
     res = lab.resulting_function()
     write_output(1, res)
+
 
 if __name__ == '__main__':
     main()
