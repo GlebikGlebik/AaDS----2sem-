@@ -1,9 +1,12 @@
 import sys
 import os
+from sys import setrecursionlimit
 
 from lab3.utils import read_input, write_output
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+
+setrecursionlimit(3000)
 
 class Labyrinth:
     def __init__(self):
@@ -15,8 +18,12 @@ class Labyrinth:
             self.graph.setdefault(i, set())
 
     def graph_builder(self):
-        for j in self.input_file[1:]:
+        for j in self.input_file[1:-1]:
             start, end = map(int, j.split())
+            if start not in self.graph:
+                self.graph[start] = set()
+            if end not in self.graph:
+                self.graph[end] = set()
             self.graph[start].add(end)
             self.graph[end].add(start)
         return self.graph
