@@ -61,7 +61,6 @@ class TestNumberOfTransfers(unittest.TestCase):
 
         # when
         m, t = check_time_and_memory(z_function, 6, data)
-        res = z_function(data)
 
         # then
         self.assertLessEqual(m, expected_memory, f"Значение {m} превышает порог {expected_memory}")
