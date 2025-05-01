@@ -15,17 +15,17 @@ class Labyrinth:
         self.n, self.m = map(int, self.input_file[0].split())
 
         for i in range(1, self.n + 1):
-            self.graph.setdefault(i, set())
+            self.graph.setdefault(i, [])
 
     def graph_builder(self):
-        for j in self.input_file[1:-1]:
+        for i in range(1, self.n + 1):
+            self.graph[i] = []
+
+        for j in self.input_file[1:]:
             start, end = map(int, j.split())
-            if start not in self.graph:
-                self.graph[start] = set()
-            if end not in self.graph:
-                self.graph[end] = set()
-            self.graph[start].add(end)
-            self.graph[end].add(start)
+            self.graph[start].append(end)
+            self.graph[end].append(start)
+
         return self.graph
 
     def components_counter(self):
